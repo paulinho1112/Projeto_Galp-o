@@ -1,0 +1,35 @@
+<div class="container">
+  <div class="formulario">
+    <div class="header">
+      <button class="back-button" routerLink="/">←</button>
+      <h2>Emprestar Novo Livro</h2>
+      <p class="subtitle">Preencha as informações do empréstimo do livro</p>
+    </div>
+    
+    <form (ngSubmit)="emprestarLivro()">
+      <div class="field-group">
+        <label>Nome da Pessoa</label>
+        <input type="text" placeholder="Digite o nome completo" [(ngModel)]="emprestimo.nome" required>
+      </div>
+
+      <div class="field-group">
+        <label>WhatsApp</label>
+        <input type="text" placeholder="(11) 99999-9999" [(ngModel)]="emprestimo.telefone" required>
+      </div>
+
+      <div class="field-group">
+        <label>Título do livro</label>
+        <input type="text" placeholder="Digite o título do livro" [(ngModel)]="emprestimo.titulo" required>
+      </div>
+
+      <div class="field-group">
+        <label>Autor do livro</label>
+        <input type="text" placeholder="Digite o nome do autor" [(ngModel)]="emprestimo.autor" required>
+      </div>
+
+      <button type="submit" class="submit-button">Emprestar Livro</button>
+    </form>
+  </div>
+</div>
+
+

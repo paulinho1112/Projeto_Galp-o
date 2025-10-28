@@ -1,0 +1,43 @@
+<div class="container">
+  <!-- Seção de Devolução -->
+  <div class="devolucao-section">
+    <div class="header">
+      <button class="back-button" routerLink="/">←</button>
+      <h2>Devoluções de livros</h2>
+      <p class="subtitle">Digite seu WhatsApp para ver os livros emprestados</p>
+    </div>
+    
+    <div class="form-section">
+      <div class="field-group">
+        <label>WhatsApp</label>
+        <input type="text" placeholder="(11) 99999-9999" [(ngModel)]="telefoneBusca">
+      </div>
+      
+      <button class="submit-button" (click)="buscarLivros()">Buscar Livros</button>
+      
+      <div class="mensagem" [ngClass]="{'erro': !mostrarLivros && mensagem, 'sucesso': mostrarLivros && mensagem}" *ngIf="mensagem">{{ mensagem }}</div>
+    </div>
+  </div>
+
+  <!-- Seção de Livros Emprestados (só aparece se encontrar livros) -->
+  <div class="livros-section" *ngIf="mostrarLivros">
+    <div class="section-header">
+      <div class="title-group">
+        <h2>Livros Emprestados</h2>
+        <p class="subtitle">Gerencie os empréstimos de livros da biblioteca comunitária</p>
+      </div>
+      <div class="count-badge">{{ livrosEmprestados.length }} livros</div>
+    </div>
+    
+    <div class="livros-list">
+      <div class="livro-card" *ngFor="let livro of livrosEmprestados">
+        <div class="livro-info">
+          <div class="livro-titulo">{{ livro.titulo }}</div>
+          <div class="livro-autor">Autor: <strong>{{ livro.autor }}</strong></div>
+          <div class="livro-data">Empréstimo: {{ livro.dataEmprestimo }}</div>
+        </div>
+        <button class="devolver-button" (click)="devolverLivro(livro)">Devolver</button>
+      </div>
+    </div>
+  </div>
+</div>
